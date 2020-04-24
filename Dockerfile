@@ -12,6 +12,11 @@ RUN rm /opt/ami3/target/appassembler/bin/*.bat
 # now, we can copy the compiled binaries across to a jdk8 container
 FROM openjdk:8
 
+#Install packages
+RUN apt update && apt install -y \
+    tesseract-ocr \
+&& rm -rf /var/lib/apt/lists/*
+
 # install nvm & node
 ENV NVM_DIR /opt/nvm
 ENV NODE_VERSION 7.10.1
